@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
-import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
@@ -19,18 +19,6 @@ const Navbar = () => {
       autoResize: true,
       ignoreMobileResize: true,
     });
-
-    // Clean up GSAP Trial Overlay if present
-    const cleanTrial = () => {
-      document.querySelectorAll("div").forEach((div) => {
-        if (div.innerText && div.innerText.includes("Trial version")) {
-          div.style.display = "none";
-          div.remove();
-        }
-      });
-    };
-    setTimeout(cleanTrial, 1000);
-    setTimeout(cleanTrial, 5000);
 
     smoother.scrollTop(0);
     smoother.paused(true);
