@@ -10,7 +10,7 @@ const setCharacter = (
 ) => {
   const loader = new GLTFLoader();
   const dracoLoader = new DRACOLoader();
-  dracoLoader.setDecoderPath("/draco/");
+  dracoLoader.setDecoderPath(`${import.meta.env.BASE_URL}draco/`);
   loader.setDRACOLoader(dracoLoader);
 
   const loadCharacter = () => {
@@ -80,7 +80,7 @@ const setCharacter = (
                 }
                 // Glasses/Eyes logic - FORCE VISIBILITY
                 else if (meshName === "EYEs001" || meshName.toLowerCase().includes("glass") || meshName.toLowerCase().includes("spectacles")) {
-                  materials.forEach((mat: any, i) => {
+                  materials.forEach((_, i) => {
                     // Use standard material with emissive to force it to show up white/silver
                     const newMat = new THREE.MeshStandardMaterial({
                       color: "#FFFFFF", // White base
