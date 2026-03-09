@@ -36,7 +36,7 @@ const WorkImage = (props: Props) => {
             <MdArrowOutward />
           </div>
         )}
-        <img src={props.image} alt={props.alt} />
+        <img src={props.image.startsWith("/") ? `${import.meta.env.BASE_URL}${props.image.slice(1)}` : props.image} alt={props.alt} />
         {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
       </a>
     </div>

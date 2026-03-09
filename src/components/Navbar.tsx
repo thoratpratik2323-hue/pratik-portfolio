@@ -20,6 +20,18 @@ const Navbar = () => {
       ignoreMobileResize: true,
     });
 
+    // Clean up GSAP Trial Overlay if present
+    const cleanTrial = () => {
+      document.querySelectorAll("div").forEach((div) => {
+        if (div.innerText && div.innerText.includes("Trial version")) {
+          div.style.display = "none";
+          div.remove();
+        }
+      });
+    };
+    setTimeout(cleanTrial, 1000);
+    setTimeout(cleanTrial, 5000);
+
     smoother.scrollTop(0);
     smoother.paused(true);
 
@@ -42,7 +54,7 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
+        <a href={import.meta.env.BASE_URL} className="navbar-title" data-cursor="disable">
           PT
         </a>
         <a
@@ -54,17 +66,17 @@ const Navbar = () => {
         </a>
         <ul>
           <li>
-            <a data-href="#about" href="#about">
+            <a data-href="#about" href={`${import.meta.env.BASE_URL}#about`}>
               <HoverLinks text="ABOUT" />
             </a>
           </li>
           <li>
-            <a data-href="#work" href="#work">
+            <a data-href="#work" href={`${import.meta.env.BASE_URL}#work`}>
               <HoverLinks text="WORK" />
             </a>
           </li>
           <li>
-            <a data-href="#contact" href="#contact">
+            <a data-href="#contact" href={`${import.meta.env.BASE_URL}#contact`}>
               <HoverLinks text="CONTACT" />
             </a>
           </li>
